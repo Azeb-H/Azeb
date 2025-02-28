@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper Audiobook Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-headphones-alt"></i>
+                <span>Whisper</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#audiobooks">Audiobooks</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn login-btn">Log In</button>
+                <button class="btn signup-btn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="brand-tag">
+                    <span class="brand-tag-text">Azeb's Audiobook collection</span>
+                </div>
+                <h1>Welcome to Whisper</h1>
+                <p class="tagline">Discover. Listen. Explore.</p>
+                <div class="search-container">
+                    <input type="text" placeholder="Search audiobooks...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn primary-btn">Browse Audiobooks</button>
+                    <button class="btn secondary-btn">Select Genre</button>
+                </div>
+                <div class="social-subscribe">
+                    <button class="btn social-btn"><i class="fas fa-share-alt"></i> Connect</button>
+                    <button class="btn subscribe-btn"><i class="fas fa-bell"></i> Subscribe</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <svg class="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="#ffffff" fill-opacity="1" d="M0,128L48,149.3C96,171,192,213,288,213.3C384,213,480,171,576,149.3C672,128,768,128,864,149.3C960,171,1056,213,1152,224C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+                <div class="floating-books">
+                    <div class="book-icon book1"><i class="fas fa-book"></i></div>
+                    <div class="book-icon book2"><i class="fas fa-book-open"></i></div>
+                    <div class="book-icon book3"><i class="fas fa-book-reader"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audiobooks" class="audiobooks-section">
+            <h2>Featured Audiobooks</h2>
+            <div class="audiobook-grid">
+                <!-- Audiobooks will be loaded here via JavaScript -->
+            </div>
+            <button class="btn load-more">Load More</button>
+        </section>
+
+        <!-- Additional sections can be added here -->
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-headphones-alt"></i>
+                <span>Whisper</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#audiobooks">Audiobooks</a></li>
+                        <li><a href="#genres">Genres</a></li>
+                        <li><a href="#new">New Releases</a></li>
+                        <li><a href="#bestsellers">Bestsellers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="#profile">My Profile</a></li>
+                        <li><a href="#library">My Library</a></li>
+                        <li><a href="#wishlist">Wishlist</a></li>
+                        <li><a href="#settings">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#press">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#copyright">Copyright</a></li>
+                        <li><a href="#cookies">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Whisper Audiobook Library. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

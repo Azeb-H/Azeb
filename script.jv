@@ -1,0 +1,203 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    // Highlight active section on scroll
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
+                const currentId = section.getAttribute('id');
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+    
+    // Sample audiobook data
+    const audiobooks = [
+        {
+            title: "The Silent Patient",
+            author: "Alex Michaelides",
+            duration: "8h 43m",
+            genre: "Thriller"
+        },
+        {
+            title: "Atomic Habits",
+            author: "James Clear",
+            duration: "5h 35m",
+            genre: "Self-Development"
+        },
+        {
+            title: "Where the Crawdads Sing",
+            author: "Delia Owens",
+            duration: "12h 12m",
+            genre: "Fiction"
+        },
+        {
+            title: "The Alchemist",
+            author: "Paulo Coelho",
+            duration: "4h 2m",
+            genre: "Fantasy"
+        },
+        {
+            title: "Educated",
+            author: "Tara Westover",
+            duration: "12h 10m",
+            genre: "Memoir"
+        },
+        {
+            title: "Sapiens",
+            author: "Yuval Noah Harari",
+            duration: "15h 17m",
+            genre: "Science"
+        },
+        {
+            title: "The Four Winds",
+            author: "Kristin Hannah",
+            duration: "15h 2m",
+            genre: "Historical Fiction"
+        },
+        {
+            title: "Project Hail Mary",
+            author: "Andy Weir",
+            duration: "16h 10m",
+            genre: "Sci-Fi"
+        }
+    ];
+    
+    // Populate audiobooks grid
+    const audiobookGrid = document.querySelector('.audiobook-grid');
+    
+    function renderAudiobooks() {
+        audiobooks.forEach(book => {
+            const bookCard = document.createElement('div');
+            bookCard.className = 'audiobook-card';
+            
+            bookCard.innerHTML = `
+                <div class="audiobook-image">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="audiobook-info">
+                    <h3 class="audiobook-title">${book.title}</h3>
+                    <p class="audiobook-author">By ${book.author}</p>
+                    <div class="audiobook-duration">
+                        <i class="far fa-clock"></i>
+                        <span>${book.duration}</span>
+                    </div>
+                </div>
+            `;
+            
+            audiobookGrid.appendChild(bookCard);
+        });
+    }
+    
+    renderAudiobooks();
+    
+    // Search functionality
+    const searchInput = document.querySelector('.search-container input');
+    const searchBtn = document.querySelector('.search-btn');
+    
+    function searchAudiobooks() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        if (searchTerm.trim() === '') {
+            return;
+        }
+        
+        // Clear the grid
+        audiobookGrid.innerHTML = '';
+        
+        // Filter and render books
+        const filteredBooks = audiobooks.filter(book => 
+            book.title.toLowerCase().includes(searchTerm) || 
+            book.author.toLowerCase().includes(searchTerm) ||
+            book.genre.toLowerCase().includes(searchTerm)
+        );
+        
+        if (filteredBooks.length === 0) {
+            audiobookGrid.innerHTML = '<p class="no-results">No audiobooks found matching your search.</p>';
+        } else {
+            filteredBooks.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'audiobook-card';
+                
+                bookCard.innerHTML = `
+                    <div class="audiobook-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="audiobook-info">
+                        <h3 class="audiobook-title">${book.title}</h3>
+                        <p class="audiobook-author">By ${book.author}</p>
+                        <div class="audiobook-duration">
+                            <i class="far fa-clock"></i>
+                            <span>${book.duration}</span>
+                        </div>
+                    </div>
+                `;
+                
+                audiobookGrid.appendChild(bookCard);
+            });
+        }
+    }
+    
+    searchBtn.addEventListener('click', searchAudiobooks);
+    searchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            searchAudiobooks();
+        }
+    });
+    
+    // Load more button functionality
+    const loadMoreBtn = document.querySelector('.load-more');
+    
+    loadMoreBtn.addEventListener('click', function() {
+        // In a real application, this would fetch more books from an API
+        // Here we'll just show a message
+        this.textContent = 'No more audiobooks to load';
+        this.disabled = true;
+        setTimeout(() => {
+            this.textContent = 'Load More';
+            this.disabled = false;
+        }, 2000);
+    });
+    
+    // Genre selection button
+    const genreBtn = document.querySelector('.secondary-btn');
+    
+    genreBtn.addEventListener('click', function() {
+        const genres = ['Fiction', 'Non-Fiction', 'Thriller', 'Romance', 'Sci-Fi', 
+                       'Fantasy', 'Biography', 'History', 'Self-Development', 'Business'];
+        
+        // In a real app, this would open a dropdown or modal
+        alert(`Available genres: ${genres.join(', ')}`);
+    });
+});
+
